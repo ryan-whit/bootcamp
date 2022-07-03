@@ -12,11 +12,9 @@ The page ensures that the options specified by the user satisfy the acceptance c
 
 ## Links
 
-TODO: add links when merged into main for deployment to site
+Git repo: https://github.com/ryan-whit/bootcamp-hwk-rwhitmore/tree/main/03-JavaScript
 
-Git repo:
-
-Website:
+Website: https://ryan-whit.github.io/bootcamp-hwk-rwhitmore/03-JavaScript/module3.html
 
 ## Screenshots
 
