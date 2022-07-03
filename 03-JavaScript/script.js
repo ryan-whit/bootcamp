@@ -91,21 +91,24 @@ function generatePasswordLength() {
 }
 
 
-// Main function for generating the character types ============================
+// Main function for generating the password ===================================
 
 // *** Disclaimer
-// Motivation for the random character generator came from StackOverflow:
+// Motivation for the random character generator used in the following function
+// came from StackOverflow:
 // https://stackoverflow.com/questions/9719570/generate-random-password-string-with-requirements-in-javascript
 // ***
 
 // This is the main password generator function. It queries the user for their
-// password character preferences,; i.e. whether or not to include lower-case
-// alphabet characters, upper case alphabet characters, numeric characters, or
-// special characters; and then randomly generates a password from the available
-// characters based on the user-specified password length.
+// password character preferences,; i.e. the password length, and whether or not
+// to include lower-case alphabet characters, upper case alphabet characters,
+// numeric characters, or special characters; and then randomly generates a
+// password from the available characters based on the user-specified password
+// length.
 function generatePassword() {
   // This function returns a string representing the randomly generated password
   
+  // Prompt the user for a password length
   var passwordLength = generatePasswordLength();
 
   // The following are boolean types that will be used in logic for
@@ -115,11 +118,11 @@ function generatePassword() {
   var useNumericCharacters = window.confirm(numericCharactersMsg);
   var useSpecialCharacters = window.confirm(specialCharactersMsg);
 
-  // Initialize the string containing the pool of possible password characters
+  // Initialize the string containing the pool of all possible password characters
   var passwordCharacterPool = ""
 
   // Using the user-specified preferences, build the full string of characters
-  // used in the random password generator
+  // that can be used to generate the password
   if (useLowerCaseAlphabet) {passwordCharacterPool += lowerCaseAlphabeticCharacters};
   if (useUpperCaseAlphabet) {passwordCharacterPool += upperCaseAlphabeticCharacters};
   if (useNumericCharacters) {passwordCharacterPool += numericCharacters};
@@ -127,7 +130,7 @@ function generatePassword() {
 
   // The user could select no characters to use in the password, so default to
   // the lower-case alphabet characters to ensure a non-empty password is
-  // generated.
+  // returned.
   if (passwordCharacterPool === "") {
     window.alert("Nothing was selected. Defaulting to lower-case alphabetic characters.")
   }
@@ -154,8 +157,6 @@ function writePassword() {
 
 }
 
-// Modify the DOM with the password after password has been generated
-var generateBtn = document.querySelector("#generate");
-
 // Add event listener to generate button
+var generateBtn = document.querySelector("#generate");
 generateBtn.addEventListener("click", writePassword);
