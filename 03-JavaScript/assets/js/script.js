@@ -133,8 +133,8 @@ function generatePassword() {
   // returned.
   if (passwordCharacterPool === "") {
     window.alert("Nothing was selected. Defaulting to lower-case alphabetic characters.")
+    passwordCharacterPool = lowerCaseAlphabeticCharacters
   }
-  passwordCharacterPool = lowerCaseAlphabeticCharacters
 
   // Randomly select characters from the pool of possible password characters
   // and generate a password that has a length equal to that specified by the user

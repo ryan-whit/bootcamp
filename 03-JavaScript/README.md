@@ -20,5 +20,4 @@ Website:
 
 ## Screenshots
 
-Query the user for a password length:
-
+![GIF of the web interface for password generation.](./images/output.gif)
