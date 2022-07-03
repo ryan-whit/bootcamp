@@ -18,4 +18,7 @@ Git repo:
 
 Website:
 
-## 
+## Screenshots
+
+Query the user for a password length:
+
