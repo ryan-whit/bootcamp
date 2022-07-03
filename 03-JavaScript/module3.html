@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+  
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,28 +8,70 @@
     <title>Password Generator</title>
     <link rel="stylesheet" href="./assets/css/style.css" />
   </head>
+  
   <body>
-    <div class="wrapper">
+    <!-- Wrapper for the page contents -->
+    <section class="wrapper">
+      
       <header>
         <h1>Password Generator</h1>
       </header>
+      
+      <!-- Contents that include the user information and password prompt button -->
       <div class="card">
+        
         <div class="card-header">
-          <h2>Generate a Password</h2>
+          <h3>Click the red button below to generate a password</h3>
+          
+          <!-- Define the options for which the user will be prompted -->
+          <p>The user is prompted for the following items:</p>
+          
+          <ul>
+            
+            <li>Length of the password (number of characters)</li>
+            
+            <!-- Use JS to fill in the lower-case characters -->
+            <li>Option to include lower-case alphabet characters:
+              <ul><li class="list-items" id="lowerCaseCharacters"></li></ul>
+            </li>
+            
+            <!-- Use JS to fill in the upper-case characters -->
+            <li>Option to include upper-case alphabet characters:
+              <ul><li class="list-items" id="upperCaseCharacters"></li></ul>
+            </li>
+            
+            <!-- Use JS to fill in the numeric characters -->
+            <li>Option to include numeric characters:
+              <ul><li class="list-items" id="numericCharacters"></li></ul>
+            </li>
+            
+            <!-- Use JS to fill in the special characters -->
+            <li>Option to include special characters:
+              <ul><li class="list-items" id="specialCharacters"></li></ul>
+            </li>
+          
+          </ul>
         </div>
+        
+        <!-- Location of the randomly generated password -->
         <div class="card-body">
           <textarea
             readonly
             id="password"
-            placeholder="Your Secure Password"
+            placeholder="(secure password will show up here after following the prompt)"
             aria-label="Generated Password"
           ></textarea>
         </div>
+        
+        <!-- User prompts will show up by clicking the button -->
         <div class="card-footer">
-          <button id="generate" class="btn">Generate Password</button>
+          <button id="generate" class="btn">Generate a Password</button>
         </div>
+      
       </div>
     </div>
+    
     <script src="./assets/js/script.js"></script>
+  
   </body>
-</html>
+  </html>

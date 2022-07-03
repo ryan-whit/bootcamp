@@ -4,43 +4,49 @@
 // Potential password characters, consistent with the OWASP list of
 // password special characters:
 // https://owasp.org/www-community/password-special-characters
-var lowerCaseAlphabeticCharacters = "abcdefghijklmnopqrstuvwxyz"
-var upperCaseAlphabeticCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-var numericCharacters = "1234567890"
-var specialCharacters = String.raw`"!#$%&'()*+,-./:;<=>?@[\]^_{|}~"` + "`"
+var lowerCaseAlphabeticCharacters = "abcdefghijklmnopqrstuvwxyz";
+var upperCaseAlphabeticCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+var numericCharacters = "1234567890";
+var specialCharacters = String.raw`"!#$%&'()*+,-./:;<=>?@[\]^_{|}~"` + "`";
 
 // Define the Window messages that will be used for prompting the user
 // for their desired password characters and length
 var passwordLengthMsg = `
 Please enter the desired length of the password by providing a number.
 The password must have more than 7 and less than 129 characters.
-`
+`;
 
-var provideBooleanRequest = " (Choose `OK` to yes, `Cancel` for no.)"
+var provideBooleanRequest = "(Choose `OK` for yes, `Cancel` for no.)";
 
 // Prompt for lower-case characters
 var lowerCaseAlphabetMsg = `
 Would you like to include lower-case alphabet characters in your password?
-`
-lowerCaseAlphabetMsg += provideBooleanRequest
+`;
+lowerCaseAlphabetMsg += provideBooleanRequest;
 
 // Prompt for upper-case characters
 var upperCaseAlphabetMsg = `
 Would you like to include upper-case alphabet characters in your password?
-`
-upperCaseAlphabetMsg += provideBooleanRequest
+`;
+upperCaseAlphabetMsg += provideBooleanRequest;
 
 // Prompt for numeric characters
 var numericCharactersMsg = `
 Would you like to include numeric characters in your password?
-`
-numericCharactersMsg += provideBooleanRequest
+`;
+numericCharactersMsg += provideBooleanRequest;
 
 // Prompt for special characters
 var specialCharactersMsg = `
 Would you like to include special characters in your password?
-`
-specialCharactersMsg += provideBooleanRequest
+`;
+specialCharactersMsg += provideBooleanRequest;
+
+// Populate the nested list items with the possible characters
+document.querySelector("#lowerCaseCharacters").textContent = lowerCaseAlphabeticCharacters;
+document.querySelector("#upperCaseCharacters").textContent = upperCaseAlphabeticCharacters;
+document.querySelector("#numericCharacters").textContent = numericCharacters;
+document.querySelector("#specialCharacters").textContent = specialCharacters;
 
 
 // Functions for generating the password length ================================
@@ -57,7 +63,7 @@ function passwordLengthMeetsCriteria(userProvidedPassword) {
   };
   return false;
 
-}
+};
 
 // This function is defined in order to reduce duplicate code when prompting
 // the use for a password.
@@ -68,7 +74,7 @@ function promptForPasswordLength(passwordLengthMsg) {
   
   return window.prompt(passwordLengthMsg);
 
-}
+};
 
 // This function prompts the user for a password length and iteratively checks
 // to ensure that the acceptance criteria are met, re-prompting the user until
@@ -84,11 +90,11 @@ function generatePasswordLength() {
   while (!passwordLengthMeetsCriteria(passwordLength)){
     window.alert("Password length invalid. Try again.")
     passwordLength = parseInt(promptForPasswordLength(passwordLengthMsg));
-  }
+  };
 
   return passwordLength;
 
-}
+};
 
 
 // Main function for generating the password ===================================
@@ -119,7 +125,7 @@ function generatePassword() {
   var useSpecialCharacters = window.confirm(specialCharactersMsg);
 
   // Initialize the string containing the pool of all possible password characters
-  var passwordCharacterPool = ""
+  var passwordCharacterPool = "";
 
   // Using the user-specified preferences, build the full string of characters
   // that can be used to generate the password
@@ -132,9 +138,9 @@ function generatePassword() {
   // the lower-case alphabet characters to ensure a non-empty password is
   // returned.
   if (passwordCharacterPool === "") {
-    window.alert("Nothing was selected. Defaulting to lower-case alphabetic characters.")
-    passwordCharacterPool = lowerCaseAlphabeticCharacters
-  }
+    window.alert("Nothing was selected. Defaulting to lower-case alphabetic characters.");
+    passwordCharacterPool = lowerCaseAlphabeticCharacters;
+  };
 
   // Randomly select characters from the pool of possible password characters
   // and generate a password that has a length equal to that specified by the user
@@ -144,9 +150,9 @@ function generatePassword() {
     password += passwordCharacterPool.substring(rnum, rnum+1);
   };
 
-  return password
+  return password;
 
-}
+};
 
 // Write the new password string to the #password ID
 function writePassword() {
@@ -155,7 +161,7 @@ function writePassword() {
 
   passwordText.value = password;
 
-}
+};
 
 // Add event listener to generate button
 var generateBtn = document.querySelector("#generate");
